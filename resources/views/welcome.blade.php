@@ -32,9 +32,9 @@
             <h1 class="text-2xl">Feature Flagging Demo</h1>
             @php
                 $features = [
-                    'foo' => false,
-                    'bar' => false,
-                    'baz' => false,
+                    'foo' => config('features.foo'),
+                    'bar' => config('features.bar'),
+                    'baz' => config('features.baz'),
                 ];
             @endphp
             @foreach ($features as $feature => $state)

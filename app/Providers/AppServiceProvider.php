@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        foreach($this->app['config']->get('features') as $feature => $state) {
+            if ($state) {
+                $this->loadMigrationsFrom(database_path("migrations/features/{$feature}"));
+            }
+        }
     }
 }
