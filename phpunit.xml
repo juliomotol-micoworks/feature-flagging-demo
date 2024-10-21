@@ -29,5 +29,8 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="FEATURE_FOO" value="false"/>
+        <env name="FEATURE_BAR" value="false"/>
+        <env name="FEATURE_BAZ" value="false"/>
     </php>
 </phpunit>
