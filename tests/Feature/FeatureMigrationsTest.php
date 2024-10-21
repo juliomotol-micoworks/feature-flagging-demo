@@ -1,10 +1,12 @@
 <?php
 
 use App\Providers\AppServiceProvider;
+use Support\FeatureFlag\Manager;
 
 it('can run migrations', function (string $feature, string $migrationName) {
     $this->app['config']->set("features.{$feature}", false);
 
+    unset($this->app[Manager::class]);
     $this->app->register(AppServiceProvider::class, true);
 
     $this->artisan('migrate:fresh');
@@ -17,6 +19,7 @@ it('can run migrations', function (string $feature, string $migrationName) {
 
     $this->app['config']->set("features.{$feature}", true);
 
+    unset($this->app[Manager::class]);
     $this->app->register(AppServiceProvider::class, true);
 
     $this->artisan('migrate');

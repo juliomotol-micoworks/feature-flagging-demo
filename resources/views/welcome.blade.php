@@ -32,9 +32,9 @@
             <h1 class="text-2xl">Feature Flagging Demo</h1>
             @php
                 $features = [
-                    'foo' => false,
-                    'bar' => false,
-                    'baz' => false,
+                    'foo' => FeatureFlag::active('foo'),
+                    'bar' => FeatureFlag::active('bar'),
+                    'baz' => FeatureFlag::active('baz'),
                 ];
             @endphp
             @foreach ($features as $feature => $state)
