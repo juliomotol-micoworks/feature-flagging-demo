@@ -11,12 +11,12 @@ class Manager
         protected string $migrationPathPrefix
     ) {}
 
-    public function active(string $feature): bool
+    public function active(string $feature): mixed
     {
-        return (bool) $this->features[$feature];
+        return $this->normalizeFeatureValue($this->features[$feature]);
     }
 
-    public function inactive(string $feature): bool
+    public function inactive(string $feature): mixed
     {
         return !$this->active($feature);
     }
@@ -32,5 +32,22 @@ class Manager
         }
 
         return $paths;
+    }
+
+    protected function normalizeFeatureValue(mixed $value): mixed
+    {
+        if (str_contains($value, ',')) {
+            return explode(',', $value);
+        }
+
+        if (is_numeric($value)) {
+            return (int) $value;
+        }
+
+        if (!filter_var($value, FILTER_VALIDATE_BOOLEAN)) {
+            return $value;
+        }
+
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
     }
 }
