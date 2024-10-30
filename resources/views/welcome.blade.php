@@ -51,6 +51,7 @@
                             Disabled
                         @endif
                     </span>
+                    @dump($state)
                 </p>
             @endforeach
         </div>
