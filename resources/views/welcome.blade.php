@@ -29,7 +29,7 @@
 <body class="font-sans antialiased">
     <div class="flex items-center justify-center h-screen">
         <div class="p-4 space-y-2 border rounded-lg">
-            <h1 class="text-2xl">Feature Flagging Demo</h1>
+            <h1 class="text-2xl">@lang('welcome.heading')</h1>
             @php
                 $features = [
                     'foo' => false,
@@ -46,9 +46,9 @@
                         'bg-red-500' => !$state,
                     ])>
                         @if ($state)
-                            Enabled
+                            @lang('welcome.feature.enabled')
                         @else
-                            Disabled
+                            @lang('welcome.feature.disabled')
                         @endif
                     </span>
                     @dump($state)
